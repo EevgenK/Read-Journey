@@ -1,19 +1,26 @@
 {
-  "name": "react-ts-template",
+  "name": "Read-Journey",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint . --ext .ts,.tsx",
+    "preview": "vite preview",
+    "host": "vite --host"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
+    "@reduxjs/toolkit": "^2.8.2",
     "clsx": "^2.1.1",
     "modern-normalize": "^3.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.56.4",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.6.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

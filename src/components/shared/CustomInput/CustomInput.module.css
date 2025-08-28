@@ -1,0 +1,70 @@
+.input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--text-color);
+}
+.input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-text-fill-color: var(--text-color); /* щоб текст не ставав чорним */
+  transition: background-color 9999s ease-in-out 0s; /*  для Safari */
+}
+.input_wrapper {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  position: relative;
+  color: var(--second-text-color);
+  display: flex;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  padding: 14px 14px;
+  background-color: var(--second-bg_color);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+.input_wrapper:hover,
+.input_wrapper:focus-within {
+  border-color: var(--border-color);
+}
+.error {
+  color: var(--error-color);
+  font-size: 10px;
+  text-align: start;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  position: absolute;
+  top: 100%;
+}
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-color);
+  stroke-width: 1.3px;
+}
+.toggle {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .input_wrapper {
+    line-height: 129%;
+    padding: 16px 14px;
+  }
+  .toggle {
+    right: 18px;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .toggle {
+    right: 15px;
+  }
+}

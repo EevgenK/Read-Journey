@@ -1,12 +1,15 @@
 :root {
-  --main-bg_color: #fff;
-  --bg-color: yellow;
-  --bg-color_hover: orange;
-  --text-color: #121417;
-  --text-grey: #8a8a89;
-  --green-color: #38cd3e;
+  --text-color: #f9f9f9;
+  --second-text-color: #686868;
+  --main-bg-color: #141414;
+  --bg-color: #1f1f1f;
+  --bg-color_hover: #f9f9f9;
+  --second-bg_color: #262626;
+  --green-color: #30b94d;
+  --blue-color: #4f92f7;
+  --error-color: #e90516;
+  --border-color: rgba(249, 249, 249, 0.2);
 
-  --error-color: rgb(250, 59, 59);
   --shadow: rgba(197, 233, 233, 0.3);
   --transition: 250ms ease-in-out;
 }

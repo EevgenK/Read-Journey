@@ -1,0 +1,25 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+}
+
+.text {
+  display: none;
+  width: 42px;
+}
+.icon {
+  fill: var(--text-color);
+}
+@media screen and (min-width: 768px) {
+  .text {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}

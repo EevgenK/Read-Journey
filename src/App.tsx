@@ -1,11 +1,19 @@
-import CustomButton from './components/shared/CustomButton/CustomButton';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import Loader from './components/Loader/Loader';
+import Layout from './components/Layout/Layout';
+
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 
 const App = () => {
   return (
-    <>
-      <h1>Hello World!</h1>
-      <CustomButton>Hover this custom button</CustomButton>
-    </>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<RegisterPage />} />
+        {/* <Route path="/" element={<Layout />}></Route> */}
+      </Routes>
+    </Suspense>
   );
 };
 

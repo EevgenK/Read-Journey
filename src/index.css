@@ -13,10 +13,12 @@ body {
   background-color: var(--main-bg_color);
   color: var(--text-color);
   /*CHANGE TO YOUR FONTS*/
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  background-color: var(--main-bg-color);
 }
 
 *,
