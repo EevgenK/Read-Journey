@@ -4,6 +4,7 @@ import Logo from '../../components/shared/Logo/Logo';
 import { RegisterPayload } from '../../types/auth-types';
 import s from './RegisterPage.module.css';
 
+import PhoneImage from '../../components/PhoneImage/PhoneImage';
 const RegisterPage = () => {
   const onHandleSubmit = async (values: RegisterPayload): Promise<void> => {
     console.log(values);
@@ -23,6 +24,9 @@ const RegisterPage = () => {
           initialVal={{ name: '', email: '', password: '' }}
           redirectText="Already have an account?"
         />
+      </Container>
+      <Container additionalClass={s.phone}>
+        <PhoneImage />
       </Container>
     </section>
   );
