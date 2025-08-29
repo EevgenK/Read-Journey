@@ -2,10 +2,15 @@ import Container from '../../components/shared/Container/Container';
 import AuthForm from '../../components/shared/AuthForm/AuthForm';
 import Logo from '../../components/shared/Logo/Logo';
 import { RegisterPayload } from '../../types/auth-types';
-import s from './RegisterPage.module.css';
+import s from './AuthPage.module.css';
 
 import PhoneImage from '../../components/PhoneImage/PhoneImage';
-const RegisterPage = () => {
+type AuthPageProps = {
+  mode: 'login' | 'register';
+};
+
+const AuthPage: React.FC<AuthPageProps> = ({ mode }) => {
+  const isLogin = mode === 'login';
   const onHandleSubmit = async (values: RegisterPayload): Promise<void> => {
     console.log(values);
     // const { name, email, password } = values;
@@ -19,10 +24,18 @@ const RegisterPage = () => {
           Expand your mind, reading <span>a book</span>
         </h1>
         <AuthForm
-          buttonText="Registration"
+          isLogin={isLogin}
+          buttonText={isLogin ? 'Login' : 'Registration'}
+          linkTo={isLogin ? '/register' : '/login'}
           action={onHandleSubmit}
-          initialVal={{ name: '', email: '', password: '' }}
-          redirectText="Already have an account?"
+          initialVal={
+            isLogin
+              ? { email: '', password: '' }
+              : { name: '', email: '', password: '' }
+          }
+          redirectText={
+            isLogin ? 'Don’t have an account?' : 'Already have an account?'
+          }
         />
       </Container>
       <Container additionalClass={s.phone}>
@@ -32,4 +45,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default AuthPage;

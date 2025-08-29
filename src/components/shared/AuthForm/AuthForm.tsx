@@ -6,18 +6,23 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import CustomButton from '../CustomButton/CustomButton';
 import CustomInput from '../CustomInput/CustomInput';
+import clsx from 'clsx';
 
 export interface AuthFormProps {
   initialVal: RegisterPayload;
   redirectText: string;
   buttonText: string;
   action: (data: RegisterPayload) => Promise<void>;
+  linkTo: string;
+  isLogin: boolean;
 }
 const AuthForm = ({
   initialVal,
   redirectText,
   buttonText,
   action,
+  linkTo,
+  isLogin,
 }: AuthFormProps) => {
   const schema = createAuthSchema({
     isNameRequired: Boolean(initialVal.name),
@@ -45,11 +50,13 @@ const AuthForm = ({
 
   return (
     <form className={s.auth} onSubmit={handleSubmit(onHandleSubmit)}>
-      <CustomInput
-        label="Name"
-        registration={register('name')}
-        error={errors.name}
-      />
+      {!isLogin && (
+        <CustomInput
+          label="Name"
+          registration={register('name')}
+          error={errors.name}
+        />
+      )}
       <CustomInput
         label="Email"
         registration={register('email')}
@@ -62,9 +69,9 @@ const AuthForm = ({
         iconId={['icon-view', 'icon-view_not']}
       />
 
-      <div className={s.button_wrap}>
+      <div className={clsx(s.button_wrap, { [s.login]: isLogin })}>
         <CustomButton type="submit">{buttonText}</CustomButton>
-        <Link className={s.link} to="/login">
+        <Link className={s.link} to={linkTo}>
           {redirectText}
         </Link>
       </div>
