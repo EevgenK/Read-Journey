@@ -5,16 +5,21 @@ import { RegisterPayload } from '../../types/auth-types';
 import s from './AuthPage.module.css';
 
 import PhoneImage from '../../components/PhoneImage/PhoneImage';
+import { useDispatch } from 'react-redux';
+import { loginUser, registerUser } from '../../redux/auth/operations';
+import { AppDispatch } from '../../redux/store';
 type AuthPageProps = {
   mode: 'login' | 'register';
 };
 
 const AuthPage: React.FC<AuthPageProps> = ({ mode }) => {
+  const dispatch = useDispatch<AppDispatch>();
   const isLogin = mode === 'login';
   const onHandleSubmit = async (values: RegisterPayload): Promise<void> => {
-    console.log(values);
-    // const { name, email, password } = values;
-    // await dispatch(registerUser({ name, email, password }));
+    const { email, password } = values;
+    await dispatch(
+      isLogin ? loginUser({ email, password }) : registerUser(values),
+    ); /* Make here a redirect to Recommended page  */
   };
   return (
     <section>
