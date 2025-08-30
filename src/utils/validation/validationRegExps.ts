@@ -1,2 +1,1 @@
-export const validEmail: RegExp =
-  /^[a-zA-Z0-9._%+-]+@(gmail\.com|meta\.ua|ukr\.net)$/i;
+export const validEmail: RegExp = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;

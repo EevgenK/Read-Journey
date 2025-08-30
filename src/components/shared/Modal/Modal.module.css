@@ -1,0 +1,76 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1200;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal {
+  overflow: auto;
+  position: relative;
+  max-width: 350px;
+  max-height: calc(100vh - 24px);
+  min-height: 300px;
+  text-align: center;
+  border-radius: 30px;
+  padding: 40px;
+  background-color: var(--main-bg_color);
+  transform: translate(-100%, -100%) rotate(-360deg);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.modal.menu {
+  padding: 0;
+  width: 50%;
+  height: 100%;
+  background-color: var(--bg-secondary-color);
+  justify-content: flex-end;
+  border-radius: 0;
+  margin: 0 0 0 auto;
+  transform: translate(-100%, 0);
+}
+.modal.menu.active {
+  transform: translate(0);
+  opacity: 1;
+}
+
+.modal.active {
+  transform: translate(0) rotate(0deg);
+  opacity: 1;
+}
+
+.close_btn {
+  stroke: var(--text-color);
+  transition: stroke var(--transition);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.close_btn.menu_close {
+  top: 34px;
+  right: 40px;
+}
+.close_btn:focus,
+.close_btn:hover {
+  stroke: var(--bg-color);
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    max-width: 565px;
+    padding: 64px;
+  }
+}

@@ -20,6 +20,11 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   letter-spacing: -0.02em;
+  transition: color var(--transition);
+}
+.link:hover,
+.link:focus {
+  color: var(--text-color);
 }
 @media screen and (min-width: 768px) {
   .auth {

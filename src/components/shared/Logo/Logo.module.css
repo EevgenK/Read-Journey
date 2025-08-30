@@ -12,6 +12,9 @@
 .icon {
   fill: var(--text-color);
 }
+.text.header_text {
+  display: none;
+}
 @media screen and (min-width: 768px) {
   .text {
     display: inline-block;
@@ -21,5 +24,10 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     white-space: nowrap;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .text.text.header_text {
+    display: inline;
   }
 }

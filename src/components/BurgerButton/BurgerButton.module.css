@@ -1,0 +1,19 @@
+.icon {
+  width: 42px;
+  height: 28px;
+  stroke: var(--text-color);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 10%;
+  transition: border-color var(--transition), scale var(--transition);
+}
+.burger_button:hover .icon,
+.burger_button:focus .icon {
+  border-color: var(--text-color);
+  scale: 1.1;
+}
+@media screen and (min-width: 768px) {
+  .burger_button {
+    display: none;
+  }
+}

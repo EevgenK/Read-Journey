@@ -1,0 +1,23 @@
+.button {
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 12px 28px;
+  display: none;
+  transition: color var(--transition), border-color var(--transition),
+    background-color var(--transition);
+}
+.button:hover,
+.button:focus {
+  color: var(--bg-color);
+  border-color: var(--text-color);
+  background-color: var(--text-color);
+}
+.button.sidebar {
+  display: block;
+  width: fit-content;
+}
+@media screen and (min-width: 768px) {
+  .button {
+    display: block;
+  }
+}

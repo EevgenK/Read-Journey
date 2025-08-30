@@ -1,0 +1,43 @@
+.user_bar {
+  display: flex;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 112%;
+  letter-spacing: 0.02em;
+}
+.user_profile {
+  letter-spacing: -0.02em;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 8px;
+}
+.user_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  text-align: center;
+
+  background-color: var(--bg-secondary-color);
+}
+.user_name {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .user_bar {
+    gap: 16px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .user_name {
+    display: block;
+  }
+  .user_icon {
+    margin-right: 8px;
+  }
+}
