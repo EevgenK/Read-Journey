@@ -1,10 +1,13 @@
 .button {
   border: 1px solid var(--border-color);
   border-radius: 30px;
-  padding: 12px 28px;
-  display: none;
+  padding: 10px 20px;
+  width: fit-content;
   transition: color var(--transition), border-color var(--transition),
     background-color var(--transition);
+}
+.header_btn {
+  display: none;
 }
 .button:hover,
 .button:focus {
@@ -14,10 +17,12 @@
 }
 .button.sidebar {
   display: block;
-  width: fit-content;
 }
 @media screen and (min-width: 768px) {
   .button {
+    padding: 12px 28px;
+  }
+  .header_btn {
     display: block;
   }
 }

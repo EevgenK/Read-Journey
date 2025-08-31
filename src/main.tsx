@@ -8,12 +8,15 @@ import App from './App.tsx';
 import { store, persistor } from './redux/store.ts';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import ToastConfig from './components/shared/ToastConfig/ToastConfig.tsx';
+
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
         <App />
+        <ToastConfig />
       </BrowserRouter>
     </PersistGate>
   </Provider>,

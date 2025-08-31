@@ -1,11 +1,13 @@
 import { useSelector } from 'react-redux';
 import s from './UserBar.module.css';
 import { selectAuth } from '../../redux/auth/selectors';
-import LogoutButton from '../LogoutButton/LogoutButton';
+import CustomActiveBtn from '../CustomActiveBtn/CustomActiveBtn';
 import BurgerButton from '../BurgerButton/BurgerButton';
+import { useAuthActions } from '../../utils/hooks/useLogaut';
 
 const UserBar = () => {
   const userName = useSelector(selectAuth)?.name;
+  const { handleLogout } = useAuthActions();
   return (
     <div className={s.user_bar}>
       <div className={s.user_profile}>
@@ -15,7 +17,7 @@ const UserBar = () => {
         </span>
         <span className={s.user_name}>{userName}</span>
       </div>
-      <LogoutButton />
+      <CustomActiveBtn variation="userBar" onClick={handleLogout} />
       <BurgerButton />
     </div>
   );

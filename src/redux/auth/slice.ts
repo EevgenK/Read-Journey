@@ -1,13 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   registerUser,
   loginUser,
-  refreshUser,
   getCurrentUser,
   logoutUser,
 } from './operations';
 
-interface AuthState {
+export interface AuthState {
   user: {
     name: string;
     email: string;
@@ -30,7 +29,20 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setTokens: (
+      state,
+      action: PayloadAction<{ accessToken: string; refreshToken: string }>,
+    ) => {
+      state.tokens = {
+        token: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken,
+      };
+    },
+    clearTokens: (state) => {
+      state.tokens = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
@@ -94,5 +106,5 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { setTokens, clearTokens } = authSlice.actions;
 export const authReducer = authSlice.reducer;

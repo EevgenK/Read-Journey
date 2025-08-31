@@ -9,9 +9,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
 import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/slice';
+import { authReducer, AuthState } from './auth/slice';
 import modalReducer from './modal/slice';
+import { setupInterceptors } from '../utils/api/setupInterceptors';
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -21,10 +23,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     modal: modalReducer,
-    auth: persistReducer(
-      authPersistConfig,
-      authReducer,
-    ) as unknown as import('redux').Reducer<unknown>,
+    auth: persistReducer<AuthState>(authPersistConfig, authReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -33,7 +32,7 @@ export const store = configureStore({
       },
     }),
 });
-
+setupInterceptors(store);
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

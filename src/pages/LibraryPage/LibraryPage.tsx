@@ -1,10 +1,11 @@
+import Dashboard from '../../components/shared/Dashboard/Dashboard';
 import s from './LibraryPage.module.css';
 
 const LibraryPage = () => {
   return (
-    <div>
-      <h1 className={s.title}>My Library Page</h1>
-    </div>
+    <section className={s.library_page}>
+      <Dashboard />
+    </section>
   );
 };
 

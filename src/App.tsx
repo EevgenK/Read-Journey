@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 import Loader from './components/Loader/Loader';
 import Layout from './components/Layout/Layout';
 import ProtectedRoute from './components/shared/ProtectedRoute/ProtectedRoute';
@@ -9,6 +9,7 @@ import {
   selectAuth,
   selectAuthError,
   selectIsAuthLoading,
+  selectTokens,
 } from './redux/auth/selectors';
 import { getCurrentUser } from './redux/auth/operations';
 import { AppDispatch } from './redux/store';
@@ -23,20 +24,25 @@ const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector(selectIsAuthLoading);
   const errorMessage = useSelector(selectAuthError);
+  const isToken = useSelector(selectTokens);
   const isLoggedIn = useSelector(selectAuth);
   useEffect(() => {
     const checkUser = async () => {
-      if (!isLoggedIn) {
+      if (isToken && !isLoggedIn) {
         try {
           await dispatch(getCurrentUser());
-          console.log('rerender after getCurrentUser');
         } catch (error) {
           console.log(error);
         }
       }
     };
     checkUser();
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch, isToken, isLoggedIn]);
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(`${errorMessage}`);
+    }
+  }, [errorMessage]);
   return isLoading ? (
     <Loader />
   ) : (
