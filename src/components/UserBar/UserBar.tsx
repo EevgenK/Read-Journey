@@ -17,7 +17,9 @@ const UserBar = () => {
         </span>
         <span className={s.user_name}>{userName}</span>
       </div>
-      <CustomActiveBtn variation="userBar" onClick={handleLogout} />
+      <CustomActiveBtn variation="userBar" onClick={handleLogout}>
+        Log out
+      </CustomActiveBtn>
       <BurgerButton />
     </div>
   );

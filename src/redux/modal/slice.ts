@@ -1,4 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Book } from '../../types/books-type';
+
+export interface modalState {
+  isOpenModal: boolean;
+  type: string;
+  isVisible: boolean;
+  properties: Book | null;
+}
 
 const modalSlice = createSlice({
   name: 'modal',
@@ -6,7 +14,7 @@ const modalSlice = createSlice({
     isOpenModal: false,
     type: '',
     isVisible: false,
-    properties: '',
+    properties: null,
   },
   reducers: {
     openModal: (state, action) => {
@@ -17,6 +25,7 @@ const modalSlice = createSlice({
     closeModal: (state) => {
       state.isOpenModal = false;
       state.type = '';
+      state.properties = null;
     },
     onModalVisible: (state) => {
       state.isVisible = true;

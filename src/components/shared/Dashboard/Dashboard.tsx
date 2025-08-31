@@ -3,10 +3,15 @@ import Container from '../Container/Container';
 import FilterForm from '../FilterForm/FilterForm';
 import s from './Dashboard.module.css';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getRecommendBooks } from '../../../redux/books/operations';
+import { AppDispatch } from '../../../redux/store';
+import useRecommendBooks from '../../../utils/hooks/useRecommendBooks';
 
 const Dashboard = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const location = useLocation().pathname;
-  console.log('location', location);
+  const limit = useRecommendBooks();
   const [DashboardContent, setDashboardContent] = useState<ReactNode>(null);
 
   const CurrentPageContent = useCallback(() => {
@@ -28,6 +33,11 @@ const Dashboard = () => {
         return null;
     }
   }, [location]);
+
+  // useEffect(() => {
+  //   dispatch(getRecommendBooks({ page: 1, limit }));
+  // }, [dispatch, limit]);
+
   useEffect(() => {
     setDashboardContent(<CurrentPageContent />);
     return () => {

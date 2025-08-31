@@ -13,6 +13,7 @@ import {
 } from './redux/auth/selectors';
 import { getCurrentUser } from './redux/auth/operations';
 import { AppDispatch } from './redux/store';
+import { selectBooksError } from './redux/books/selectors';
 
 const AuthPage = lazy(() => import('./pages/AuthPage/AuthPage'));
 const RecommendedPage = lazy(
@@ -23,7 +24,9 @@ const LibraryPage = lazy(() => import('./pages/LibraryPage/LibraryPage'));
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector(selectIsAuthLoading);
-  const errorMessage = useSelector(selectAuthError);
+  const authError = useSelector(selectAuthError);
+  const booksError = useSelector(selectBooksError);
+  const errorMessage = authError || booksError;
   const isToken = useSelector(selectTokens);
   const isLoggedIn = useSelector(selectAuth);
   useEffect(() => {

@@ -1,0 +1,37 @@
+.recommended_books {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.books_list {
+  display: flex;
+  gap: 21px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+}
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+@media screen and (min-width: 768px) {
+  .wrap {
+    margin-bottom: 20px;
+  }
+  .title {
+    font-size: 28px;
+    line-height: 114%;
+    letter-spacing: 0.02em;
+  }
+  .recommended_books {
+    padding: 40px;
+  }
+  .books_list {
+    gap: 25px;
+  }
+}

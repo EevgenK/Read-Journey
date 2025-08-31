@@ -11,7 +11,9 @@ const MenuContent = () => {
   return (
     <div onClick={handleClose} className={s.wrap}>
       <UserNav />
-      <CustomActiveBtn variation="sidebar" onClick={handleLogout} />
+      <CustomActiveBtn variation="sidebar" onClick={handleLogout}>
+        Log out
+      </CustomActiveBtn>
     </div>
   );
 };

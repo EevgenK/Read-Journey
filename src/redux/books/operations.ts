@@ -1,17 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance } from '../../utils/api/api';
+import { handleAxiosError, instance } from '../../utils/api/api';
+import { BooksPayload } from '../../types/books-type';
 
-export const getRecommendedBooks = createAsyncThunk(
-  'books/getRecommendedBooks',
-  async (_, { rejectWithValue }) => {
+export const getRecommendBooks = createAsyncThunk(
+  'books/getRecommendBooks',
+  async (cred: BooksPayload, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get('books/recommended');
+      const { data } = await instance.get('books/recommend', {
+        params: cred,
+      });
       return data;
-    } catch (error) {
-      if (error instanceof Error) {
-        return rejectWithValue(error.message);
-      }
-      return rejectWithValue('Unknown error');
+    } catch (err) {
+      return rejectWithValue(handleAxiosError(err));
     }
   },
 );
