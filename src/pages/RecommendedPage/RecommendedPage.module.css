@@ -1,6 +1,15 @@
-section {
+.recommended_page {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+@media screen and (min-width: 1440px) {
+  .recommended_page {
+    flex-direction: row;
+    gap: 16px;
+    max-width: 1216px;
+    min-width: 1216px;
+    margin: 0 auto;
+  }
 }

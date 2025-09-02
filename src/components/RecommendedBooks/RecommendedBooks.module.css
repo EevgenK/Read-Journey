@@ -32,6 +32,16 @@
     padding: 40px;
   }
   .books_list {
-    gap: 25px;
+    row-gap: 27px;
+    column-gap: 25px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .recommended_books {
+    height: 651px;
+    padding-bottom: 28px;
+  }
+  .books_list {
+    column-gap: 20px;
   }
 }

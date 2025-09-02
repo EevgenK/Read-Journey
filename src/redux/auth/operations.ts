@@ -58,6 +58,7 @@ export const getCurrentUser = createAsyncThunk(
 Mike Rose
 testMike@ukr.net
 M123456
+Luco Dashvar
 
 
 */

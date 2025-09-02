@@ -7,8 +7,11 @@ export interface Book {
   recommend: boolean;
 }
 export interface BooksPayload {
-  title?: string;
-  author?: string;
+  title?: string | null;
+  author?: string | null;
   page: number;
   limit: number;
 }
+export type AddBookPayload = Partial<
+  Pick<Book, 'title' | 'author' | 'totalPages'>
+>;

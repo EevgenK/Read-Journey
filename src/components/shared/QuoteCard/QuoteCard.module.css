@@ -1,0 +1,26 @@
+.wrapper {
+  display: none;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  width: 313px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  background-color: var(--bg-secondary-color);
+  color: var(--second-text-color);
+}
+.icon {
+  font-size: 40px;
+  width: 70px;
+  height: 50px;
+}
+.highlight {
+  color: var(--text-color);
+}
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+}

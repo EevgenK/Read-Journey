@@ -1,0 +1,26 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .dash {
+    padding: 32px;
+  }
+  .dashboard {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .dashboard {
+    flex-direction: column;
+  }
+  .dash {
+    height: 651px;
+    max-width: 353px;
+    min-width: 353px;
+    padding: 40px 20px 20px 20px;
+  }
+}

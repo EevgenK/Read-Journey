@@ -10,6 +10,9 @@ header {
   header {
     margin-bottom: 16px;
   }
+  header > .header_container {
+    padding: 16px;
+  }
 }
 @media screen and (min-width: 1440px) {
 }

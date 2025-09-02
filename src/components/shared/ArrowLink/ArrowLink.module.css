@@ -1,0 +1,25 @@
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--second-text-color);
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  font-size: 14px;
+  line-height: 129%;
+  transition: color var(--transition);
+}
+.link:hover,
+.link:focus {
+  color: var(--text-color);
+}
+
+.icon {
+  stroke: var(--text-color);
+  width: 24px;
+  transition: stroke var(--transition);
+}
+.link:hover .icon,
+.link:focus .icon {
+  stroke: var(--blue-color);
+}

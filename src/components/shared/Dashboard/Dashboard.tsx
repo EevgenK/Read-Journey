@@ -4,14 +4,16 @@ import FilterForm from '../FilterForm/FilterForm';
 import s from './Dashboard.module.css';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRecommendBooks } from '../../../redux/books/operations';
 import { AppDispatch } from '../../../redux/store';
-import useRecommendBooks from '../../../utils/hooks/useRecommendBooks';
+import { changeFilters } from '../../../redux/filter/slice';
+import Description from '../../Description/Description';
+import clsx from 'clsx';
+import QuoteCard from '../QuoteCard/QuoteCard';
 
 const Dashboard = () => {
   const dispatch = useDispatch<AppDispatch>();
   const location = useLocation().pathname;
-  const limit = useRecommendBooks();
+
   const [DashboardContent, setDashboardContent] = useState<ReactNode>(null);
 
   const CurrentPageContent = useCallback(() => {
@@ -19,24 +21,33 @@ const Dashboard = () => {
     switch (location) {
       case '/recommended':
         return (
-          <>
-            <FilterForm />
-          </>
+          <div className={s.dashboard}>
+            <FilterForm
+              buttonText="To apply"
+              type="filter"
+              initialVal={{ title: '', author: '' }}
+              action={(values) => {
+                dispatch(changeFilters(values));
+              }}
+            />
+            <Description />
+            <QuoteCard />
+          </div>
         );
       case '/library':
         return (
           <>
-            <h2>Hello</h2>
+            <FilterForm
+              buttonText="Add book"
+              type="add book"
+              initialVal={{ title: '', author: '', totalPages: 0 }}
+            />
           </>
         );
       default:
         return null;
     }
-  }, [location]);
-
-  // useEffect(() => {
-  //   dispatch(getRecommendBooks({ page: 1, limit }));
-  // }, [dispatch, limit]);
+  }, [dispatch, location]);
 
   useEffect(() => {
     setDashboardContent(<CurrentPageContent />);
@@ -46,7 +57,7 @@ const Dashboard = () => {
   }, [CurrentPageContent]);
 
   return (
-    <Container additionalClass={s.dashboard}>
+    <Container additionalClass={s.dash}>
       {DashboardContent}
       {/*компоненти по switchcase в залежності від page */}
     </Container>
@@ -54,3 +65,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+/*додати лінк до опису, вирівняти UI */

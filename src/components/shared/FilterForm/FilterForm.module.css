@@ -1,0 +1,8 @@
+.filter_form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.filter_form > *:last-child {
+  margin-top: 12px;
+}

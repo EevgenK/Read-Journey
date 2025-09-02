@@ -28,6 +28,9 @@
 .input_wrapper:focus-within {
   border-color: var(--border-color);
 }
+.input::placeholder {
+  color: var(--text-color);
+}
 .error {
   color: var(--error-color);
   font-size: 10px;

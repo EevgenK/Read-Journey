@@ -45,7 +45,6 @@ const AuthForm = ({
     Object.entries(initialVal).forEach(([key, value]) => {
       setValue(key as keyof RegisterPayload, value);
     });
-    /*redirect to another page */
   };
 
   return (

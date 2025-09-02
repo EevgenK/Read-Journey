@@ -4,6 +4,7 @@
   height: 208px;
   margin-bottom: 8px;
   cursor: pointer;
+  transition: scale var(--transition);
 }
 .book_title {
   font-weight: 700;
@@ -22,4 +23,8 @@
   line-height: 120%;
   letter-spacing: -0.02em;
   color: var(--second-text-color);
+}
+.book_img:hover,
+.book_img:focus {
+  scale: 1.1;
 }

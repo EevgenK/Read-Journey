@@ -16,7 +16,6 @@ const CustomActiveBtn = ({
     <button
       {...rest}
       className={clsx(s.button, variation === 'userBar' && s.header_btn)}
-      type="button"
       disabled={disabled}
     />
   );

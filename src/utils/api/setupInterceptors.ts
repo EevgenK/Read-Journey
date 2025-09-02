@@ -31,7 +31,7 @@ export const setupInterceptors = (store: Store) => {
             auth: { tokens?: { refreshToken?: string } };
           };
           const refreshToken = state.auth.tokens?.refreshToken;
-
+          console.log('refreshToken=>>', refreshToken);
           if (!refreshToken) throw new Error('No refresh token');
 
           // refresh token request

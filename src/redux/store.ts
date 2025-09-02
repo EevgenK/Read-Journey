@@ -15,6 +15,7 @@ import { authReducer, AuthState } from './auth/slice';
 import modalReducer from './modal/slice';
 import { setupInterceptors } from '../utils/api/setupInterceptors';
 import { booksReducer } from './books/slice';
+import filtersReducer from './filter/slice';
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     books: booksReducer,
     modal: modalReducer,
+    filter: filtersReducer,
     auth: persistReducer<AuthState>(authPersistConfig, authReducer),
   },
   middleware: (getDefaultMiddleware) =>

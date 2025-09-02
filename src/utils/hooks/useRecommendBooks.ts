@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectBooksTotalPages } from '../../redux/books/selectors';
 import { getRecommendBooks } from '../../redux/books/operations';
 import { AppDispatch } from '../../redux/store';
+import { selectFilter } from '../../redux/filter/selectors';
 
 const useRecommendBooks = () => {
   const dispatch = useDispatch<AppDispatch>();
   const totalPages = useSelector(selectBooksTotalPages);
+  const { title, author } = useSelector(selectFilter);
   const [limit, setLimit] = useState(2);
   const [page, setPage] = useState(1);
 
@@ -27,8 +29,15 @@ const useRecommendBooks = () => {
     return () => window.removeEventListener('resize', updateLimit);
   }, []);
   useEffect(() => {
-    dispatch(getRecommendBooks({ page, limit }));
-  }, [dispatch, page, limit]);
+    dispatch(
+      getRecommendBooks({
+        title: title?.trim(),
+        author: author?.trim(),
+        page,
+        limit,
+      }),
+    );
+  }, [dispatch, page, limit, title, author]);
   const nextPage = () => {
     if (typeof totalPages === 'number' && page < totalPages)
       setPage((prev) => prev + 1);
