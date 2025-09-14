@@ -13,6 +13,7 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children }: ModalProps): ReactElement | null => {
   const isMenu = useSelector(selectModalType) === 'menu';
+  const isLibrary = useSelector(selectModalType) === 'book added';
   const { handleClose, isVisible, isOpen, handleOverlayClick } = useModal();
 
   if (!modalRoot || !isOpen) return null;
@@ -22,7 +23,12 @@ const Modal = ({ children }: ModalProps): ReactElement | null => {
       onClick={handleOverlayClick}
     >
       <div
-        className={clsx(s.modal, { [s.active]: isVisible }, isMenu && s.menu)}
+        className={clsx(
+          s.modal,
+          { [s.active]: isVisible },
+          isMenu && s.menu,
+          isLibrary && s.library,
+        )}
       >
         <button onClick={handleClose} type="button" aria-label="close">
           <svg

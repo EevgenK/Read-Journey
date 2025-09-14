@@ -25,3 +25,13 @@
 .text span {
   color: var(--text-color);
 }
+@media screen and (min-width: 768px) {
+  .icon {
+    font-size: 68px;
+    margin-bottom: 32px;
+    line-height: 103%;
+  }
+  .title {
+    font-size: 20px;
+  }
+}

@@ -20,7 +20,7 @@
 .modal {
   overflow: auto;
   position: relative;
-  max-width: 335px;
+  width: 335px;
   /* min-height: 421px; */
   text-align: center;
   border: 1px solid rgba(104, 104, 104, 0.2);
@@ -31,7 +31,9 @@
   opacity: 0;
   transition: all 0.5s ease;
 }
-
+.modal.library {
+  padding: 60px 46px;
+}
 .modal.menu {
   padding: 0;
   width: 50%;
@@ -71,6 +73,9 @@
 @media screen and (min-width: 768px) {
   .modal {
     width: 500px;
-    min-height: 421px;
+  }
+  .modal.library {
+    width: 342px;
+    padding: 50px;
   }
 }

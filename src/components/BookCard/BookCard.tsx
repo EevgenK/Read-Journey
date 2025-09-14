@@ -6,29 +6,42 @@ import { AppDispatch } from '../../redux/store';
 import { openModal } from '../../redux/modal/slice';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
+import RemoveBtn from '../RemoveBtn/RemoveBtn';
+import { deleteBookFromLibrary } from '../../redux/books/operations';
 
 export interface BookCardProps {
   item: Book;
+  isBtn?: boolean;
 }
-const BookCard = ({ item }: BookCardProps) => {
+const BookCard = ({ item, isBtn }: BookCardProps) => {
   const dispatch = useDispatch<AppDispatch>();
-  const isLibraryPage = useLocation().pathname === '/library';
+  const isLibraryPageWithoutBtn =
+    useLocation().pathname === '/library' && !isBtn;
   const handleClick = () => {
     dispatch(openModal({ type: 'book', properties: item }));
   };
   return (
-    <li className={clsx(s.card, isLibraryPage && s.lib)}>
+    <li className={clsx(s.card, isLibraryPageWithoutBtn && s.lib)}>
       <img
         onClick={handleClick}
-        className={clsx(s.book_img, isLibraryPage && s.lib)}
+        className={clsx(s.book_img, isLibraryPageWithoutBtn && s.lib)}
         src={item?.imageUrl}
         alt={`${item?.title} image`}
         width="137"
         height="208"
         loading="lazy"
       />
-      <h3 className={s.book_title}>{getShortTitle(item.title)}</h3>
-      <h4 className={s.book_author}>{item?.author}</h4>
+      <div className={clsx(s.book_info, isBtn && s.with_btn)}>
+        <div className={clsx(s.book_titles, isBtn && s.with_btn)}>
+          <h3 className={s.book_title}>{getShortTitle(item.title)}</h3>
+          <h4 className={s.book_author}>{item?.author}</h4>
+        </div>
+        {isBtn && (
+          <RemoveBtn
+            onClick={() => dispatch(deleteBookFromLibrary(item?._id))}
+          />
+        )}
+      </div>
     </li>
   );
 };

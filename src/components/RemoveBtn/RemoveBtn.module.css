@@ -1,0 +1,18 @@
+.icon {
+  stroke: #e85050;
+  fill: transparent;
+}
+.delete_btn {
+  text-align: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(232, 80, 80, 0.1);
+  border: 1px solid rgba(232, 80, 80, 0.2);
+  transition: all var(--transition);
+}
+.delete_btn:focus,
+.delete_btn:hover {
+  background-color: rgba(232, 80, 80, 0.2);
+  border: 1px solid #e85050;
+}

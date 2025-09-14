@@ -1,9 +1,9 @@
 .card {
-  max-width: 137px;
+  width: 137px;
   height: 248px;
 }
 .card.lib {
-  max-width: 80px;
+  width: 80px;
   height: 141px;
 }
 .book_img {
@@ -26,7 +26,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 137px;
+  max-width: 100%;
   margin-bottom: 2px;
 }
 .book_author {
@@ -40,6 +40,24 @@
 .book_img:focus {
   scale: 1.1;
 }
+.book_titles {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+.book_info {
+  display: flex;
+  max-width: 100%;
+}
+.book_info.with_btn {
+  justify-content: space-between;
+  align-items: center;
+}
+.book_titles.with_btn {
+  text-align: start;
+  max-width: 87px;
+}
+
 @media screen and (min-width: 768px) {
   .card.lib {
     max-width: 71px;

@@ -7,3 +7,5 @@ export const selectBooksTotalPages = (state: RootState) =>
   state.books.books?.totalPages;
 export const selectIsBooksLoading = (state: RootState) => state.books.isLoading;
 export const selectBooksError = (state: RootState) => state.books.error;
+export const selectLibraryBooks = (state: RootState) =>
+  state.books.library?.books;

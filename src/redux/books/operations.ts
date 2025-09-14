@@ -54,3 +54,27 @@ export const addRecommendedBookToLibrary = createAsyncThunk<
     );
   },
 );
+
+export const getLibraryBooks = createAsyncThunk(
+  'books/getLibraryBooks',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get('books/own');
+      return data;
+    } catch (err) {
+      return rejectWithValue(handleAxiosError(err));
+    }
+  },
+);
+export const deleteBookFromLibrary = createAsyncThunk<
+  { message: string; id: BookId },
+  BookId,
+  { rejectValue: string; state: RootState }
+>('books/deleteBookFromLibrary', async (id: BookId, { rejectWithValue }) => {
+  try {
+    const { data } = await instance.delete(`books/remove/${id}`);
+    return data;
+  } catch (err) {
+    return rejectWithValue(handleAxiosError(err));
+  }
+});
