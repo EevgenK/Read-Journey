@@ -15,3 +15,4 @@ export interface BooksPayload {
 export type AddBookPayload = Partial<
   Pick<Book, 'title' | 'author' | 'totalPages'>
 >;
+export type BookId = string;

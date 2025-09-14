@@ -9,6 +9,7 @@ import { ReactNode, useCallback, useEffect, useState } from 'react';
 import Modal from '../shared/Modal/Modal';
 import MenuContent from '../MenuContent/MenuContent';
 import BookContent from '../BookContent/BookContent';
+import BookSuccessAddContent from '../BookSuccessAddContent/BookSuccessAddContent';
 
 const Layout: React.FC = () => {
   const modalOpen = useSelector(selectModalStatus);
@@ -22,6 +23,8 @@ const Layout: React.FC = () => {
         return <MenuContent />;
       case 'book':
         return <BookContent />;
+      case 'book added':
+        return <BookSuccessAddContent />;
       default:
         return null;
     }

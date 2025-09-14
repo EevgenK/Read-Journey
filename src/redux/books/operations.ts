@@ -1,6 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { handleAxiosError, instance } from '../../utils/api/api';
-import { AddBookPayload, Book, BooksPayload } from '../../types/books-type';
+import {
+  AddBookPayload,
+  Book,
+  BookId,
+  BooksPayload,
+} from '../../types/books-type';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../modal/slice';
+import { RootState } from '../store';
+import {
+  addBookHelperThunk,
+  isAlreadyExistedBook,
+} from '../../utils/api/addBookHelperThunk';
 
 export const getRecommendBooks = createAsyncThunk(
   'books/getRecommendBooks',
@@ -16,15 +28,29 @@ export const getRecommendBooks = createAsyncThunk(
   },
 );
 
-export const addBookToLibrary = createAsyncThunk(
+export const addBookToLibrary = createAsyncThunk<
+  Book,
+  AddBookPayload,
+  { rejectValue: string; state: RootState }
+>(
   'books/addBookToLibrary',
-  async (cred: AddBookPayload, { rejectWithValue }) => {
-    try {
-      const { data } = await instance.post('books/add', cred);
-      console.log(' data==>>', data);
-      return data;
-    } catch (err) {
-      return rejectWithValue(handleAxiosError(err));
-    }
+  async (cred: AddBookPayload, { rejectWithValue, getState }) => {
+    return addBookHelperThunk(cred, 'books/add', getState, rejectWithValue);
+  },
+);
+
+export const addRecommendedBookToLibrary = createAsyncThunk<
+  Book,
+  Book,
+  { rejectValue: string; state: RootState }
+>(
+  'books/addRecommendedBookToLibrary',
+  async (cred: Book, { rejectWithValue, getState }) => {
+    return addBookHelperThunk(
+      cred,
+      `books/add/${cred._id}`,
+      getState,
+      rejectWithValue,
+    );
   },
 );

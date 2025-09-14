@@ -23,7 +23,7 @@ const useModal = () => {
     closeTimeoutRef.current = setTimeout(() => {
       dispatch(closeModal());
       document.body.style.overflow = 'auto';
-    }, 500);
+    }, 250);
   }, [dispatch]);
 
   const handleOverlayClick = useCallback(
@@ -37,16 +37,15 @@ const useModal = () => {
 
   useEffect(() => {
     if (isOpen) {
+      document.body.style.overflow = 'hidden';
       openTimeoutRef.current = setTimeout(() => {
         dispatch(onModalVisible());
-      }, 0);
-
-      document.body.style.overflow = 'hidden';
+      }, 260);
     } else {
       dispatch(offModalVisible());
       closeTimeoutRef.current = setTimeout(() => {
         document.body.style.overflow = 'auto';
-      }, 500);
+      }, 250);
     }
 
     return () => {

@@ -21,7 +21,7 @@
   overflow: auto;
   position: relative;
   max-width: 335px;
-  min-height: 421px;
+  /* min-height: 421px; */
   text-align: center;
   border: 1px solid rgba(104, 104, 104, 0.2);
   border-radius: 12px;
