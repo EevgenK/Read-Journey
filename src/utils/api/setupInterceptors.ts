@@ -35,7 +35,11 @@ export const setupInterceptors = (store: Store) => {
           if (!refreshToken) throw new Error('No refresh token');
 
           // refresh token request
-          const { data } = await instance.get('users/current/refresh');
+          const { data } = await instance.get('users/current/refresh', {
+            headers: {
+              Authorization: `Bearer ${refreshToken}`,
+            },
+          });
 
           // update redux
           store.dispatch(setTokens({ accessToken: data.token, refreshToken }));

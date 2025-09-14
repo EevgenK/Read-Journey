@@ -2,7 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 .filter_form > *:last-child {
   margin-top: 12px;
+}
+@media screen and (min-width: 768px) {
+  .filter_form {
+    width: 295px;
+  }
 }

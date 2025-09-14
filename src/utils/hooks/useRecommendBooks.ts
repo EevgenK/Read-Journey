@@ -14,6 +14,7 @@ const useRecommendBooks = () => {
 
   useEffect(() => {
     const updateLimit = () => {
+      if (limit === 3) return;
       if (window.innerWidth >= 1440) {
         setLimit(10);
       } else if (window.innerWidth >= 768) {
@@ -27,7 +28,7 @@ const useRecommendBooks = () => {
     window.addEventListener('resize', updateLimit);
 
     return () => window.removeEventListener('resize', updateLimit);
-  }, []);
+  }, [limit]);
   useEffect(() => {
     dispatch(
       getRecommendBooks({
@@ -47,6 +48,6 @@ const useRecommendBooks = () => {
     if (page > 1) setPage((prev) => prev - 1);
   };
 
-  return { limit, page, setPage, nextPage, prevPage, totalPages };
+  return { limit, page, setPage, nextPage, prevPage, totalPages, setLimit };
 };
 export default useRecommendBooks;

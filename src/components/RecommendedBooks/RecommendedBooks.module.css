@@ -2,17 +2,26 @@
   padding-top: 40px;
   padding-bottom: 40px;
 }
+
+.recommended_books.lib {
+  background-color: var(--second-bg_color);
+  padding: 20px;
+}
 .books_list {
   display: flex;
   gap: 21px;
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.books_list.lib {
+  gap: 20px;
+  margin-bottom: 17px;
+  flex-wrap: nowrap;
+}
 .title {
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
-  letter-spacing: -0.02em;
 }
 .wrap {
   display: flex;
@@ -28,12 +37,25 @@
     line-height: 114%;
     letter-spacing: 0.02em;
   }
+  .title.lib {
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+  }
   .recommended_books {
     padding: 40px;
+  }
+  .recommended_books.lib {
+    padding: 26px 40px 27px 20px;
+    max-width: 313px;
+    min-width: 313px;
   }
   .books_list {
     row-gap: 27px;
     column-gap: 25px;
+  }
+  .books_list.lib {
+    justify-content: flex-start;
   }
 }
 @media screen and (min-width: 1440px) {

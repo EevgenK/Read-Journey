@@ -7,8 +7,11 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../redux/store';
 import { changeFilters } from '../../../redux/filter/slice';
 import Description from '../../Description/Description';
-import clsx from 'clsx';
+
 import QuoteCard from '../QuoteCard/QuoteCard';
+import RecommendedBooks from '../../RecommendedBooks/RecommendedBooks';
+import DashBoardWrap from '../DashBoardWrap/DashBoardWrap';
+import { addBookToLibrary } from '../../../redux/books/operations';
 
 const Dashboard = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +24,7 @@ const Dashboard = () => {
     switch (location) {
       case '/recommended':
         return (
-          <div className={s.dashboard}>
+          <DashBoardWrap>
             <FilterForm
               buttonText="To apply"
               type="filter"
@@ -32,17 +35,21 @@ const Dashboard = () => {
             />
             <Description />
             <QuoteCard />
-          </div>
+          </DashBoardWrap>
         );
       case '/library':
         return (
-          <>
+          <DashBoardWrap case="lib">
             <FilterForm
               buttonText="Add book"
               type="add book"
               initialVal={{ title: '', author: '', totalPages: 0 }}
+              action={(values) => {
+                dispatch(addBookToLibrary(values));
+              }}
             />
-          </>
+            <RecommendedBooks page={location} />
+          </DashBoardWrap>
         );
       default:
         return null;

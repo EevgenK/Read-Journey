@@ -23,6 +23,7 @@
   background-color: var(--second-bg_color);
   cursor: pointer;
   transition: border-color var(--transition);
+  white-space: nowrap;
 }
 .input_wrapper:hover,
 .input_wrapper:focus-within {

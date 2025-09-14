@@ -7,20 +7,30 @@ import Loader from '../Loader/Loader';
 import BookCard from '../BookCard/BookCard';
 import { Book } from '../../types/books-type';
 import PaginationBtns from '../PaginationBtns/PaginationBtns';
+import ArrowLink from '../shared/ArrowLink/ArrowLink';
+import clsx from 'clsx';
+export interface RecommendedBooksProps {
+  page?: string;
+}
 
-const RecommendedBooks = () => {
+const RecommendedBooks = ({ page }: RecommendedBooksProps) => {
   const isLoading = useSelector(selectIsBooksLoading);
   const books = useSelector(selectBooks);
+  const isLibraryPage = page === '/library';
 
   if (isLoading && !books?.length) return <Loader />;
 
   return (
-    <Container additionalClass={s.recommended_books}>
+    <Container
+      additionalClass={clsx(s.recommended_books, isLibraryPage && s.lib)}
+    >
       <div className={s.wrap}>
-        <h2 className={s.title}>Recommended</h2>
-        <PaginationBtns />
+        <h2 className={clsx(s.title, isLibraryPage && s.lib)}>
+          {isLibraryPage ? 'Recommended books' : 'Recommended'}
+        </h2>
+        {!isLibraryPage && <PaginationBtns />}
       </div>
-      <ul className={s.books_list}>
+      <ul className={clsx(s.books_list, isLibraryPage && s.lib)}>
         {isLoading ? (
           <Loader />
         ) : (
@@ -29,6 +39,7 @@ const RecommendedBooks = () => {
             .map((book) => <BookCard item={book} key={book._id} />)
         )}
       </ul>
+      {isLibraryPage && <ArrowLink linkText="Home" linkTo="/recommended" />}
     </Container>
   );
 };
