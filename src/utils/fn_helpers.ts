@@ -6,6 +6,8 @@ export const getShortTitle = (title: string): string => {
   const idx = title.indexOf('.');
   return idx !== -1 ? title.slice(0, idx) : title;
 };
+export const formatValue = (str: string) =>
+  str.toLowerCase().trim().replace(/\s+/g, '-');
 // utils for reducers and thunks
 export const handlePending = (state: BooksState) => {
   state.isLoading = true;

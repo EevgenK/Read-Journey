@@ -6,3 +6,9 @@
   font-size: 20px;
   line-height: 100%;
 }
+.lib_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}

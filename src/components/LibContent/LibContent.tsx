@@ -9,11 +9,8 @@ import { Book } from '../../types/books-type';
 import BookCard from '../BookCard/BookCard';
 
 const LibContent = () => {
-  const dispatch = useDispatch<AppDispatch>();
   const books = useSelector(selectLibraryBooks); //add ui for libBooks//
-  useEffect(() => {
-    dispatch(getLibraryBooks());
-  }, [dispatch]);
+
   return (
     <div className={s.empty_content}>
       {!books?.length ? (

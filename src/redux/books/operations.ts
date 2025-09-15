@@ -57,9 +57,10 @@ export const addRecommendedBookToLibrary = createAsyncThunk<
 
 export const getLibraryBooks = createAsyncThunk(
   'books/getLibraryBooks',
-  async (_, { rejectWithValue }) => {
+  async (status: string, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get('books/own');
+      const url = status ? `books/own?status=${status}` : 'books/own';
+      const { data } = await instance.get(url);
       return data;
     } catch (err) {
       return rejectWithValue(handleAxiosError(err));
