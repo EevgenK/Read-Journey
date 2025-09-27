@@ -16,4 +16,7 @@
   .dashboard_wrap {
     flex-direction: column;
   }
+  .dashboard_wrap.lib {
+    gap: 78px;
+  }
 }

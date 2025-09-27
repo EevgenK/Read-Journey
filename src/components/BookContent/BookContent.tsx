@@ -39,7 +39,8 @@ const BookContent = () => {
       <h2 className={s.book_title}>{getShortTitle(properties?.title)}</h2>
       <h3 className={s.book_author}>{properties?.author}</h3>
       <p className={s.page_amount}>{properties?.totalPages} pages</p>
-      <CustomActiveBtn onClick={addBook}>Add to library</CustomActiveBtn>
+      <CustomActiveBtn onClick={addBook}>Add to library</CustomActiveBtn> /*add
+      reading book */
     </div>
   );
 };

@@ -4,11 +4,17 @@
 .title {
   font-weight: 700;
   font-size: 20px;
-  line-height: 100%;
+  line-height: 1;
 }
 .lib_header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 14px;
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 28px;
+    line-height: 1.14;
+  }
 }

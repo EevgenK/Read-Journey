@@ -1,10 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import BooksPicture from '../shared/BooksPicture/BooksPicture';
 import s from './LibContent.module.css';
-import { AppDispatch } from '../../redux/store';
 import { selectLibraryBooks } from '../../redux/books/selectors';
-import { useEffect } from 'react';
-import { getLibraryBooks } from '../../redux/books/operations';
 import { Book } from '../../types/books-type';
 import BookCard from '../BookCard/BookCard';
 

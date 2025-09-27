@@ -63,7 +63,11 @@
     height: 651px;
     padding-bottom: 28px;
   }
+
   .books_list {
     column-gap: 20px;
+  }
+  .recommended_books.lib {
+    height: 259px;
   }
 }

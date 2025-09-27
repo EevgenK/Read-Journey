@@ -41,8 +41,13 @@ export const setupInterceptors = (store: Store) => {
             },
           });
 
-          // update redux
-          store.dispatch(setTokens({ accessToken: data.token, refreshToken }));
+          // update redux (CHECK HERE)
+          store.dispatch(
+            setTokens({
+              accessToken: data.token,
+              refreshToken: data.refreshToken || refreshToken,
+            }),
+          );
 
           // retry request with new token
           originalRequest.headers.Authorization = `Bearer ${data.token}`;
