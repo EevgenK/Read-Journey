@@ -6,13 +6,9 @@ import {
   BookId,
   BooksPayload,
 } from '../../types/books-type';
-import { useDispatch } from 'react-redux';
-import { openModal } from '../modal/slice';
+
 import { RootState } from '../store';
-import {
-  addBookHelperThunk,
-  isAlreadyExistedBook,
-} from '../../utils/api/addBookHelperThunk';
+import { addBookHelperThunk } from '../../utils/api/addBookHelperThunk';
 
 export const getRecommendBooks = createAsyncThunk(
   'books/getRecommendBooks',

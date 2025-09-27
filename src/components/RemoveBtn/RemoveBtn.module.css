@@ -3,7 +3,9 @@
   fill: transparent;
 }
 .delete_btn {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 28px;
   height: 28px;
   border-radius: 50%;

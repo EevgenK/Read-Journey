@@ -1,0 +1,132 @@
+/* Form container */
+.form {
+  position: relative;
+}
+
+/* Custom Select Container */
+.customSelect {
+  position: relative;
+  display: inline-block;
+  width: 153px;
+}
+
+/* Select Button */
+.selectButton {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--text-color);
+  background-color: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.selectButton:hover {
+  border-color: var(--blue-color);
+  background-color: var(--bg-secondary-color);
+}
+
+.selectButton:focus {
+  border-color: var(--blue-color);
+  box-shadow: 0 0 0 2px rgba(79, 146, 247, 0.2);
+}
+
+.selectButton:active {
+  background-color: var(--bg-secondary-color);
+}
+
+/* Arrow Icon */
+.arrow {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-color);
+  transition: var(--transition);
+  transform: rotate(0deg); /* Rotate arrow to point down */
+}
+
+.arrowOpen {
+  transform: rotate(180deg); /* Rotate arrow to point up when open */
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-secondary-color);
+
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 8px;
+  overflow: hidden;
+  padding: 14px;
+}
+.dropdown > .option {
+  padding: 0px;
+  margin-bottom: 7px;
+}
+.dropdown > .option:last-child {
+  margin-bottom: 0;
+}
+
+/* Option */
+.option {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: transparent;
+  color: var(--second-text-color);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  display: block;
+  border-radius: 0;
+  margin: 0;
+}
+
+.option:hover {
+  background-color: var(--bg-secondary-color);
+  color: var(--blue-color);
+}
+
+.option:focus {
+  background-color: var(--bg-secondary-color);
+  outline: none;
+}
+
+.optionSelected {
+  color: var(--text-color);
+}
+
+.optionSelected:hover {
+  background-color: var(--blue-color);
+  color: var(--text-color);
+}
+
+/* Focus styles for better accessibility */
+.selectButton:focus-visible {
+  outline: 2px solid var(--blue-color);
+  outline-offset: 2px;
+}
+@media screen and (min-width: 768px) {
+  .selectButton {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+  .option {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}

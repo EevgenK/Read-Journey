@@ -1,6 +1,6 @@
 import s from './ArrowLink.module.css';
 import { Link } from 'react-router-dom';
-
+import sprite from '../../../assets/icons/sprite.svg';
 interface ArrowLinkProps {
   linkTo: string;
   linkText: string;
@@ -17,7 +17,7 @@ const ArrowLink = ({ linkText, linkTo }: ArrowLinkProps) => {
         width="24"
         height="24"
       >
-        <use href="/src/assets/icons/sprite.svg#icon-arrow" />
+        <use href={`${sprite}#icon-arrow`} />
       </svg>
     </Link>
   );
